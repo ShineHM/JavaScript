@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- 可以将js代码写入外部js文件中，通过script标签引入 
+		写到外部文件可以在不同的页面中同时使用，也可以利用到浏览器的缓存机制
+		推荐使用-->
+		<!-- script一旦引入外部js文件，再编写内部js代码浏览器会忽略
+		 若想再使用内部文件则需要重新再写script标签-->
+		<script type="text/javascript" src="js03.js"></script>
+		<script type="text/javascript">
+			alert("我是内部的js文件");
+		</script>
+		<!-- 可以将js文件写在script标签中
+		<script type="text/javascript">
+			alert("点我一下");
+		</script> -->
+	</head>
+	<body>
+		<!-- 虽然js可以写在标签中，但他们属于与结构耦合，不方便维护，不建议使用 -->
+		<!-- js文件可以写在点击事件onclick中，当点击按钮时才会执行 -->
+		<button onclick="alert('点我干嘛!');">点我一下！</button>
+		<!--  js文件可以写在超链接中，点击时显示-->
+		<a href="javascript:alert('再点一下!')">再点一下</a>
+		<!-- 把alert语句改为；则不会弹出提示窗口 -->
+		<a href="javascript:;')">点一下</a>
+	</body>
+</html>

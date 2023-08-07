@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			// var fun = Function("console.log('这是第一个函数')");
+			// fun();
+			/* function fun2(){
+				console.log("这是第二个函数");
+			}
+			fun2(); */
+			
+			/* var fun3 = function(){
+				console.log("我是用函数表达是创建的");
+			}
+			fun3(); */
+			
+		/* 	function num(a,b){
+				console.log(a+b);
+			}
+			num(2,3); */
+
+			/* var obj = new Object();
+			obj.name = "韩苗";
+			obj.sayname = function(){
+				console.log(obj.name);
+			}
+			function fun(){
+				console.log(obj.name);
+			};
+			//调用方法
+			obj.sayname();
+			//调用函数
+			fun(); */
+			
+			
+			function createMan(name,age,gender){
+				var obj = new Object();
+				obj.name = name;
+				obj.age = age;
+				obj.gender = gender;
+				obj.sayName = function(){
+					console.log(this.name,this.age,this.gender);
+				};
+				return obj;
+			}
+			var obj2 = createMan("韩苗",20,"女");
+			var obj3 = createMan("于蓝",22,"男");
+			obj2.sayName();
+			obj3.sayName();
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

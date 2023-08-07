@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			var a = "123";//true
+			a = 13;//true
+			a = null;//false
+			a = undefined;//false
+			a = "";//false
+			a = "  ";//true
+			a = 0;//false
+			a = NaN;//false
+			var obj = new Object();
+			a = obj;//true
+			a = Infinity;//true
+			a = Boolean(a);
+			console.log(a);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- <style type="text/css">
+			#box1{
+				width: 200px;
+				height: 200px;
+				background-color: red;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				//点btn01修改样式
+				var box1 = document.getElementById("box1"); 
+				var btn01 = document.getElementById("btn01");
+				btn01.onclick = function(){
+					box1.style.width = "300px";
+					box1.style.height = "300px";
+					box1.style.backgroundColor = "yellow";
+				}
+				
+				//点btn02读取样式
+				var btn02 = document.getElementById("btn02");
+				btn02.onclick = function(){
+					alert(box1.style.width);//此时是空白因为它只读内联样式，此时内联样式没内容，点击btn01后，才会有内联样式
+				}
+				
+				
+				//获取元素当前显示的样式
+				var btn03 = document.getElementById("btn03");
+				btn03.onclick = function(){ 
+					//alert(box1.currentStyle.width);//IE8
+					//alert(getComputedStyle(box1,null).width);//正常浏览器
+					alert(getStyle(box1,"width"));
+				}
+				
+				/* 定义一个函数，用来获取指定元素的当前的样式 
+						参数：
+							obj	要获取样式的元素
+							name 要获取的样式名*/
+				function getStyle(obj,name){
+					/* 为什么写window？因为IE8执行函数时会进行判断，他会先在函数中找getComputedStyle
+					没有找到会在全局中找,一旦找一个变量全局中也没有,就会报错,getComputedStyle他是全局里的
+					也就是window的属性,加上window之后getComputedStyle就变成了一个对象的属性,
+					属性没找到不会报错会返回undefined */
+					if(window.getComputedStyle){
+						return getComputedStyle(box1,null)[name];
+					}else{
+						return box1.currentStyle[name];
+					}
+				}
+			}
+		</script> 
+	</head>
+	<body>
+		<button type="button" id="btn01">修改样式</button>
+		<button type="button" id="btn02">读取样式</button>
+		<button type="button" id="btn03">获取元素当前显示的样式</button> -->
+	
+	<style type="text/css">
+		#box1{
+			width: 200px;
+			height: 200px;
+			background-color: red;
+			padding: 10px;
+			border: #7FFF00 10px solid;
+		}
+		#box2{
+			padding: 100px;
+			background-color: #bfa;
+		}
+		#box4{
+			width: 200px;
+			height: 200px;
+			background-color: #bfa;
+			overflow: auto;
+		}
+		#box5{
+			width: 150px;
+			height: 300px;
+			background-color: yellow;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var box1 = document.getElementById("box1");
+			var btn01 = document.getElementById("btn01");
+			var box4 = document.getElementById("box4");
+			btn01.onclick = function(){
+				//alert(box1.clientWidth);
+				//alert(box1.clientHeight);
+				//alert(box1.offsetWidth);
+				//alert(box1.offsetHeight);
+				//var op = box1.offsetParent;
+				//alert(op.id);//box2
+				//alert(box1.offsetLeft);
+				//alert(box1.offsetTop);
+				//alert(box4.clientHeight);//200
+				//alert(box4.scrollHeight);//300
+				//alert(box4.scrollTop);//100
+				alert(box4.scrollHeight - box4.scrollTop);//等于box4.clientHeight证明到底了
+				
+			}
+		}
+		
+	</script>
+	</head>
+	<body>
+		<button type="button" id="btn01">点我一下</button>
+		<br><br>
+		<div id="box4">
+			<div id="box5"></div>
+		</div>
+		<br><br>
+		<div id="box3" style="position: relative;">
+			<div id="box2" style="position: relative;">
+				<div id="box1">
+					
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

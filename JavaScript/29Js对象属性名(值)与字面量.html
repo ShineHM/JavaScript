@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			var obj1 = new Object();
+			var obj2 = new Object();
+			//obj1["nihao"] = "你好"
+			obj2.name = "我";
+			//var n = "nihao";
+			//console.log(obj1[n]);
+			obj1.test = obj2;
+			console.log(obj1.name);//obj2
+			console.log(obj1.test.name);//我
+			console.log("name" in obj1);
+			
+			var obj3 = {
+				name:"韩苗",
+				age:20,
+				gender:"女",
+				test:{name:"tom"}
+			}
+			console.log(obj3.test.name);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			 /* function createMan(name,age,gender){
+			  	var obj = new Object();
+			  	obj.name = name;
+			  	obj.age = age;
+			  	obj.gender = gender;
+			  	obj.sayName = function(){
+			  		console.log(this.name,this.age,this.gender);//this关键字（参考35js this）
+			  	};
+			  	return obj;
+			  }
+			  var obj2 = createMan("韩苗",20,"女");
+			  var obj3 = createMan("于蓝",22,"男");
+			  obj2.sayName();
+			  obj3.sayName(); */
+			  
+			  
+			/* function man(){
+				this.name = "hello";
+			}
+			var per = new man();
+			console.log(per.name); */
+			
+			
+			
+			/* function createMan(name,age,gender){
+			 	this.name = name;
+			 	this.age = age;
+			 	this.gender = gender;
+			 	this.sayName = function(){
+			 		console.log(this.name,this.age,this.gender);//this关键字（参考35js this）
+			 	};
+			 }
+			 var per = new createMan("韩苗",20,"女");
+			 var per1 = new createMan("于蓝",22,"男");
+			 per.sayName();
+			 per1.sayName();
+			 console.log(per instanceof createMan);
+			 
+			 function Dog(){
+			 }
+			 var dog = new Dog();
+			 console.log(dog instanceof createMan);
+			 console.log(dog instanceof Object); */
+			 
+			 
+			 
+			 function createMan(name,age,gender){
+			 	this.name = name;
+			 	this.age = age;
+			 	this.gender = gender;
+			 	this.sayName = fun;//this关键字（参考35js this）
+			 }
+			 //将sayName方法在全局作用域中定义
+			 function fun(){
+			 	console.log(this.name,this.age,this.gender);
+			}
+			 var per = new createMan("韩苗",20,"女");//创建createMan的实例
+			 var per1 = new createMan("于蓝",22,"男");
+			 per.sayName();
+			 per1.sayName();
+			 console.log(per.sayName==per1.sayName);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

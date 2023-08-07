@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.b1{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+			}
+			.b2{
+				height: 200px;
+				background-color: yellow;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				var box1 = document.getElementById("box1");
+				var btn01 = document.getElementById("btn01");
+				btn01.onclick = function(){
+					/*
+					 * 通过style属性来修改元素的样式，每修改一个样式，浏览器就需要重新渲染一次页面
+					 * 	这样的执行的性能是比较差的，而且这种形式当我们要修改多个样式时，也不太方便
+					 */
+					/* box1.style.width = "200px";
+					box1.style.backgroundColor = "yellow"; */
+					
+					/*
+					 * 我希望一行代码，可以同时修改多个样式
+					 */
+					
+					//修改box的class属性
+					/*
+					 * 我们可以通过修改元素的class属性来间接的修改样式
+					 * 这样一来，我们只需要修改一次，即可同时修改多个样式，
+					 * 	浏览器只需要重新渲染页面一次，性能比较好，
+					 * 	并且这种方式，可以使表现和行为进一步的分离
+					 */
+					
+					//addClass(box1,"b2");
+					//removeClass(box1,"b2");
+					toggleClass(box1,"b2");
+					}
+				}
+					
+					
+					//定义一个函数，用来向一个元素中添加指定的class属性值
+					/*
+					 * 参数:
+					 * 	obj 要添加class属性的元素
+					 *  cn 要添加的class值
+					 * 	
+					 */
+					function addClass(obj , cn){
+						if(!hasClass(obj,cn)){
+							obj.className += " "+cn;//不指定宽度时，不写加号宽度占100%，字符串中也要写空格，不然会拼串
+						} 
+					}
+					
+					/*
+					 * 判断一个元素中是否含有指定的class属性值
+					 * 	如果有该class，则返回true，没有则返回false
+					 * 	
+					 */
+					function hasClass(obj , cn){
+						var reg = new RegExp("\\b" +cn+ "\\b");
+						return reg.test(obj.className);
+					}
+					
+					/*
+					 * 删除一个元素中的指定的class属性
+					 */
+					function removeClass(obj , cn){
+						var reg = new RegExp("\\b" +cn+ "\\b");
+						obj.className = obj.className.replace(reg,"");
+					}
+					
+					/*
+					 * toggleClass可以用来切换一个类
+					 * 	如果元素中具有该类，则删除
+					 * 	如果元素中没有该类，则添加
+					 */
+					function toggleClass(obj , cn){
+						if(hasClass(obj,cn)){
+							removeClass(obj,cn);
+						}else{
+							addClass(obj,cn);
+						}
+					}
+		</script>
+	</head>
+	<body>
+		<br />
+		<button id="btn01">点击按钮修改box1的样式</button> <br><br />
+		<div id="box1" class="b1"></div>
+	</body>
+</html>

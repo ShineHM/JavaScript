@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			//第一题我的代码
+			/* var score = 90;
+			if(score == 100 && score > 90){
+				console.log("奖励一辆BMW");
+			}else if(score >= 80 && score <= 90){
+				console.log("奖励一台iphone15s");
+			}else if(score >= 60 && score < 80){
+				console.log("奖励一本参考书");
+			}else{
+				console.log("没有奖励");
+			} */
+			
+			//第一题优化代码
+			/* prompt()可以弹出一个提示框，该提示框会带有一个文本框，
+			用户可以在文本输入一些内容,该函数需要一个字符串作为参数,
+			该字符串会做为提示框的提示文字,用户输入的内容会作为函数的返回值返回,
+			可以定义一个变量来接收该内容 */
+			/* var score = prompt("请输入你的成绩：")
+			判断是否输入正确的成绩分数
+			if(score > 100 || score == 0 || isNaN(score)){
+				console.log("请输入正确成绩！");
+			}else{
+				if(score == 100){
+					console.log("奖励一辆BMW");
+				}else if(score >= 80){
+					console.log("奖励一台iphone15s");
+				}else if(score >= 60){
+					console.log("奖励一本参考书");
+				}else{
+					console.log("没有奖励"); 
+				}
+			} */
+			
+			
+			//第二题我的代码
+			// var tall = 175,money = 1000,face = 450;
+			// if(tall >= 180 && money == 1000 && face >= 500){
+			// 	console.log("我一定要嫁给他");
+			// }else if(tall >= 180 || money == 1000 || face >= 500){
+			// 	console.log("嫁吧，比上不足，比下有余");
+			// }else{
+			// 	console.log("不嫁");
+			// }
+			
+			//第二题代码优化
+			/* var tall = prompt("请输入身高（cm）：");
+			var money = prompt("请输入存款（万）：");
+			var face = prompt("请输入颜值（px）：");
+			if(tall >= 180 && money >= 1000 && face >= 500){
+				console.log("我一定要嫁给他");
+			}else if(tall >= 180 || money >= 1000 || face >= 500){
+				console.log("嫁吧，比上不足，比下有余");
+			}else{
+				console.log("不嫁"); 
+			} */
+			
+			
+			//第三题我的代码
+			// var num1 = 32,num2 = 67,num3 = 12;
+			// if(num1 > num2 && num1 > num3 && num2 >num3){
+			// 	console.log(num1,num2,num3);
+			// }else if(num2 > num1 && num2 > num3 && num1 >num3){
+			// 	console.log(num2,num1,num3);
+			// }else if(num3 > num1 && num3 > num2 && num1 >num2){
+			// 	console.log(num3,num3,num2);
+			// }
+			
+			/* //第三题代码优化
+			var num1 = +prompt("请输入第一个数字：");
+			var num2 = +prompt("请输入第二个数字：");
+			var num3 = +prompt("请输入第三个数字：");
+			//num1为最大值时
+			if (num1 > num2 && num1 > num3){
+				if (num2 > num3){
+					console.log(num3,num2,num1);
+				}else{
+					console.log(num2,num3,num1);
+				}
+			}else if (num2 > num1 && num2 > num3){
+				if (num1 > num3){
+					console.log(num3,num1,num2);
+				}else{
+					console.log(num1,num3,num2);
+				}
+			}else if(num3 > num1 && num3 > num2){
+				if (num1 > num2){
+					console.log(num2,num1,num3); 
+				}else{
+					console.log(num1,num2,num3);
+				}
+			} */
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

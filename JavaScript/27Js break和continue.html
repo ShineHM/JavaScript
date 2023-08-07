@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/* outer:
+			for(var i = 0;i < 5;i++){
+				console.log("外层循环"+i);
+				for(var j = 0;j < 5;j++){
+					break outer;//终止内层循环
+					console.log("内层循环"+j);
+				}
+			} */
+			
+			/* for(var i = 0;i < 5;i++){
+				console.log("外层循环"+i);
+				for(var j = 0;j < 5;j++){
+					continue;//终止当次循环
+					console.log("内层循环"+j);
+				}
+			} */
+			
+			//质数练习优化
+			//
+			var result = Math.sqrt(97);//开方
+			console.time("test");
+			for(var i = 1;i < 100;i++){
+				var flag = true;
+				for(var j = 2;j < Math.sqrt(i);j++){
+					if(i%j == 0){
+						flag = false;
+						break;//结束内层循环
+					}
+				}
+				if(flag){
+					console.log(i);
+				}
+			}
+			console.timeEnd("test");
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

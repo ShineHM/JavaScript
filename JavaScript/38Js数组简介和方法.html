@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/* var arr = new Array();
+			console.log(typeof arr);
+			arr[0] = 20;
+			arr[1] = 33;
+			console.log(arr[1]);
+			console.log(arr.length);
+			//arr.length = 3;
+			//console.log(arr);
+			arr[arr.length] = 70;
+			console.log(arr); */
+			
+			/* var arr1 = [1,2,3,4,10];
+			console.log(arr1); */
+			
+			//arr = [10];
+			//arr1 = new Array(10);
+			//console.log(arr);
+			//console.log(arr1);
+			
+			
+			/* var obj = {name:"韩苗"};
+			arr[arr.length] = obj;
+			arr = [{name:"韩苗"},{name:"于蓝"}];
+			console.log(arr[1].name); */
+			
+			
+			/* var arr = ["韩苗","于蓝"];
+			for (var i = 0;i < arr.length;i++){
+				console.log(arr[i]);
+			} */
+			
+			
+			
+			/* //练习一我的代码
+			function createMan(name,age,gender){
+				this.name = name;
+				this.age = age;
+			}
+			//修改原型的toString方法
+			createMan.prototype.toString = function(){
+				return "createMan[name="+this.name+",age="+this.age+"]";
+			}
+			var man = new createMan("韩韩",20);
+			var man2 = new createMan("苗苗",18);
+			var man3 = new createMan("朱朱",15);
+			var man4 = new createMan("于于",8);
+			var man5 = new createMan("蓝蓝",22);
+			var manArr = [man,man2,man3,man4,man5]
+			//问题:创建一个数组，可以将manArr中的满18岁的满提取出来，封装到一个新的数组中并返回
+			function getAdult(arr){
+				var newArr = [];
+				for(var i = 0;i < arr.length;i++){
+					var p = arr[i];
+					if(p.age >= 18){
+						newArr.push(p);
+					}
+				}
+				return newArr;
+			}
+			var  result = getAdult(manArr);
+			console.log(result); */
+			
+			
+			
+			/* //练习二代码优化
+			var arr = [1,2,3,2,2,1,3,4,2,5];
+			//去除数组中重复的数字
+			for (var i = 0;i < arr.length;i++){
+				for(var j = i+1;j < arr.length;j++){
+					if(arr[i] ==arr[j]){
+						arr.splice(j,1);
+						j--;
+					}
+				}
+			}
+			console.log(arr); */
+			
+			
+			
+			/* var arr = ["韩苗","于蓝"];
+			arr.forEach(function(value,index,obj){
+				console.log(value,index,obj);
+			}); */
+			
+			
+			
+			/* var arr = ["韩苗","于蓝","520"];
+			var result = arr.slice(0,2);
+			var result2 = arr.slice(1);
+			var result3 = arr.slice(1,-1);
+			console.log(arr);
+			console.log(result);
+			console.log(result2);
+			console.log(result3); */
+			
+			
+			
+			/* var arr = ["韩苗","于蓝","520"];
+			var result = arr.splice(1,2,,"蓝蓝","苗苗");
+			console.log(arr);
+			console.log(result); */
+			
+			
+			
+			/* var arr = ["韩苗","于蓝"];
+			//var result = arr.push("520");
+			//var result = arr.unshift("520")
+			var result = arr.shift();
+			console.log(arr);
+			console.log(result);
+			result = arr.pop();
+			console.log(arr);
+			console.log(result); */
+			
+			
+			/* var arr = ["韩苗","于蓝"];
+			var arr2 = ["蓝蓝"];
+			var arr3 = ["苗苗"];
+			var result = arr.concat(arr2,arr3,"520");
+			console.log(arr);
+			console.log(arr2);
+			console.log(result); */
+			
+			
+			
+			/* var arr = ["韩苗","于蓝"];
+			result = arr.join("&");
+			arr.reverse();
+			console.log(arr); */
+			
+			
+			
+			var arr = [2,5,6,3,1,8,4,11];
+			//arr.sort();
+			//console.log(arr);
+			arr.sort(function(a,b){
+				/* if(a > b){
+					return 1;
+				}else if(a < b){
+					return -1;
+				}else{
+					return 0;
+				} */
+				return a-b;
+				//return b-a;
+			});
+			console.log(arr);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

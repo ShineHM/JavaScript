@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<!-- <body> -->
+<!-- 		<script type="text/javascript">
+			//fun这个函数作用域访问了另一个函数fn里面的局部变量num，被访问的变量所在的函数就是闭包，则fn是闭包
+			//我们fn外面的作用域可以访问fn内部的局部变量
+			//闭包主要作用：延伸了变量的作用范围
+			function fn(){
+				var num = 10;
+				//function fun(){
+					//console.log(num);
+				//}
+				//fun();
+				//return fun;
+				return function fun(){
+					console.log(num);
+				}
+			}
+			var f = fn();//f中存的是函数
+			f();//因为存的函数，则使用函数方法调用
+			// 相当于执行了 var f = function fun(){ console.log(num);}这个操作
+		</script> -->
+		
+		
+		<!-- <ul class="nav">
+			<li>虾</li>
+			<li>鱼</li>
+			<li>肉</li>
+			<li>蟹</li>
+		</ul>
+		<script type="text/javascript">
+			//1.我们可以利用动态添加属性的方式
+			var lis = document.querySelector('.nav').querySelectorAll('li');
+			for(var i = 0;i < lis.length;i++){
+				lis[i].index = i;
+				lis[i].onclick = function(){
+					console.log(this.index);
+				}
+			}
+			
+			//2.利用闭包的方式得到li的索引
+			for(var i = 0;i < lis.length;i++){
+				//利用for创建了四个立即执行函数
+				(function(i){//立即执行函数也称为小闭包，因为函数里面的任何一个函数都可以使用i这变量
+					//console.log(i);
+					lis[i].onclick = function(){
+						console.log(i);
+					}
+				})(i);
+			}
+		</script> -->
+		
+	<!-- 3秒之后，打印所有li元素的内容 -->
+	<!-- <body>
+		<ul class="nav">
+			<li>虾</li>
+			<li>鱼</li>
+			<li>肉</li>
+			<li>蟹</li>
+		</ul>
+		<script type="text/javascript">
+			var lis = document.querySelector('.nav').querySelectorAll('li');
+			for(var i = 0;i < lis.length;i++){
+				(function(i){
+					setTimeout(function(){
+						console.log(lis[i].innerHTML);//虾鱼肉蟹
+					})
+				})(i);
+			}
+		</script>
+	</body> -->
+	
+	<!-- 计算打车价格 打车起步价13（三公里内）之后每多一公里增加5块，用户输入公里数就可以计算
+	 打车价格，如果有拥堵情况，总价格多收10块钱拥堵费-->
+	<!-- <body>
+		<script type="text/javascript">
+			var car = (function(){
+				var start = 13;//起步
+				var total = 0;//总价
+				return{
+					price:function(n){//正常总价
+						if(n <= 3){
+							total = start;
+						}else{
+							total = start + (n-3) * 5;
+						}
+						return total;
+					},
+					yd:function(flag){//拥堵价
+						return flag ? total + 10 : total;
+					}
+				}
+			})();
+			console.log(car.price(5));//23
+			console.log(car.yd(true));//33
+			console.log(car.price(1));//13
+			console.log(car.yd(false));//13
+		</script>
+	</body> -->
+	
+	
+	<!-- <body> -->
+<!-- 		<script type="text/javascript">
+			//1.思考 1
+			var name = 'The Window';
+			var object = {
+				//没有闭包的产生
+				name:'My Object',
+				getNameFunc:function(){
+					return function(){
+						return this.name;
+						//this指向Window
+					}
+				}
+			}
+			console.log(object.getNameFunc()());//The Window
+			//类似于function(){this} ();立即调用函数this是window
+			
+			//2.思考 2
+			var name = 'The Window';
+			var object = {
+				//有闭包产生
+				name:'My Object',
+				getNameFunc:function(){
+					var that = this;//this指向调用者object
+					return function(){
+						return that.name;
+					}
+				}
+			}
+			console.log(object.getNameFunc()());//My Object
+		</script> -->
+		
+		
+<!-- 		<script type="text/javascript">
+			var num = 1;
+			function fn(){
+				console.log('6句话');
+				if(num == 6){
+					return;
+				}
+				num++;
+				fn();
+			}
+			fn();
+		</script> -->
+		
+	<!--	<body>
+			 <script type="text/javascript">
+				/* l利用递归求1-n的阶乘 1 * 2 * 3 * 4 ....* n */
+				function fn(n){
+					if(n == 1){
+						return 1;
+					}
+					return n * fn(n-1);
+				}
+				console.log(fn(3));//6
+				/* 
+				详细思路：假如输入的是3
+				此时n = 3; 进入判断不等于 1
+				执行return n*fn(n-1)式子就等于return 3*fn(3-1)= return 3*fn(2)
+				但是上面式子中的fn(2)也是函数也会执行 return 3*fn(2) = return 3*(2*fn(1))
+				再执行fn(1),判断出它等于1，此时返回1结束循环，式子就等于 return 3*(2*1);值为6
+				*/
+			</script> -->
+			
+<!-- 			<script type="text/javascript">
+				/* 2. 利用递归函数求斐波那契数列（兔子序列） 1、1、2、3、5、8、13、21... 
+				用户输入一个数字 n 就可以求出这个数字对应的兔子序列值*/
+				//我们只需要知道用户输入的前两项(n-1，n-2)就可以计算出 n 对应的数列值
+				function fb(n){
+					if(n == 1 || n == 2){
+						return 1;
+					}
+					return fb(n-1) + fb(n-2);
+				}
+				console.log(fb(3));//2
+				console.log(fb(6));//8
+			</script> -->
+			
+			
+<!-- 		<body>
+			<script type="text/javascript">
+				/* 1.根据id返回对应的数据对象 */
+				var data = [{
+					id:1,
+					name:'家电',
+					goods:[{
+						id:11,
+						gname:'冰箱',
+						goods:[{
+							id:111,
+							gname:'海尔',
+						}]
+					},{
+						id:12,
+						gname:'洗衣机'
+					}]
+				},
+				{
+					id:2,
+					name:'服饰'
+				}];
+			function getID(arr,id){
+				var a = {};
+				arr.forEach(function(item){
+					//console.log(item);
+					if(item.id == id){
+						//console.log(item);
+						a = item;
+						return item;
+						//我们得到里面的数据，可以利用递归函数，里面应该有goods数组，并且长度不为0
+					}else if(item.goods && item.goods.length > 0){
+						a = getID(item.goods,id);
+					}
+				})
+				return a;
+			}
+			console.log(getID(data,1));
+			console.log(getID(data,2));
+			console.log(getID(data,11));
+			console.log(getID(data,111));
+			</script>
+		</body> -->
+		
+		
+	<!-- <body>
+		<script type="text/javascript">
+			//浅拷贝
+			var obj = {
+				id:1,
+				name:'苗苗',
+				msg:{
+					age:20
+				}
+			}
+			var o = {};
+			for(var k in obj){
+				//k是属性名   obj[k]是得到属性值
+				o[k] = obj[k];
+			}
+			console.log(o);//打印obj
+			o.msg.age = 20;
+			console.log(obj);
+			
+			//语法糖浅拷贝写法
+			Object.assign(0,obj);
+			console.log(o);
+		</script> -->
+		
+		
+<!-- 		<script type="text/javascript">
+			//深拷贝
+			var obj = {
+				id:1,
+				name:'andy',
+				msg:{
+					age:18
+				},
+				color:['pink','red']
+			};
+			var o = {};
+			function deepCopy(newobj, oldobj){
+				for(var k in oldobj){
+					//判断属性值属于那种类型
+					var item = oldobj[k];
+					//判断值是不是数组
+					if(item instanceof Array){//为什么把数组放在上面？因为数组也是对象
+						newobj[k] = [];
+						deepCopy(newobj[k],item)
+					}else if(item instanceof Object){//判断1值是不是对象
+						newobj[k] = {};
+						deepCopy(newobj[k],item)
+					}else{
+						//属于简单数据类型
+						newobj[k] = item;
+					}
+				}
+			}
+			deepCopy(o,obj);
+			console.log(o);
+			o.msg.age = 20;
+			console.log(obj);//里面的age没有变
+		</script>
+	</body> -->
+	
+	<style type="text/css">
+		span{
+			color: #aaa;
+			font-size: 14px;
+		}
+		.right{
+			color: green;
+		}
+		.wrong{
+			color: red;
+		}
+	</style>
+	<body>
+		<input type="text" class="uname"> <span>请输入用户名</span>
+		<script type="text/javascript">
+			var reg = /^[a-zA-Z0-9_-]{6,16}$/;
+			var uname = document.querySelector('.uname');
+			var span = document.querySelector('span');
+			uname.onblur = function(){
+				if(reg.test(this.value)){
+					console.log('正确的');
+					span.className = 'right';
+					span.innerHTML = '用户名输入正确';
+				}else{
+					console.log('错误的');
+					span.className = 'wrong';
+					span.innerHTML = '用户名输入正确';
+				}
+			}
+		</script>
+	</body>
+</html>

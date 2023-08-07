@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/* function fun(){
+				console.log(this);
+			}
+			fun(); *///window
+			
+			
+			
+			function fun(){
+				console.log(this.name);
+			}
+			var name = "我是全局的name";
+			var obj = {
+				name:"韩苗",
+				age:20,
+				sayName:fun
+			}
+			obj.sayName();//Object
+			fun();//window
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

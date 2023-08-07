@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- <style type="text/css">
+			#box1{
+				width: 200px;
+				height: 200px;
+				background-color: yellowgreen;
+			}
+			#s1{
+				background-color: yellow;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				var s1 = document.getElementById("s1");
+				s1.onclick = function(){
+					event = event || window.event;
+					alert("我是span的单击响应函数");
+					//取消冒泡
+					event.cancelBubble = true;
+				}
+				
+				var box1 = document.getElementById("box1");
+				box1.onclick = function(){
+					alert("我是div的单击响应函数");
+				}
+				
+				document.body.onclick = function(){
+					alert("我是body的单击响应函数");
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box1">我是box1
+			<span id="s1">我是span</span>
+		</div>
+	</body> -->
+	
+	
+	<!-- <script type="text/javascript">
+		window.onload = function(){
+			var ul = document.getElementById("ul");
+			var btn01 = document.getElementById("btn01");
+			btn01.onclick = function(){
+				var li = document.createElement("li");
+				li.innerHTML = "<a href='javascript:;'class='link'>新建的超链接</a>";
+				ul.appendChild(li);
+			}
+			
+			/* 为每个超链接都绑定了单击响应函数，这种操作比较麻烦
+			 而且这些操作只能为已经有的超链接设置事件，而新添加的超连接还需要重新绑定*/
+			 var allA = document.getElementsByTagName("a");
+			 /* for(var i = 0;i < allA.length;i++){
+				 allA[i].onclick = function(){
+					 alert("我是a的单击响应函数");
+				 }
+			 } */
+			//我们希望只绑定一次事件即可运用到多个元素上，,用事件的委派利用冒泡
+			//为ul绑定单击响应函数
+			ul.onclick = function(event){
+				event = event || window.event;
+				//event中的target表示的触发事件的对象
+				//alert(event.target);
+				if(event.target.className == "link"){
+					alert("我是ul中的单击函数");
+				}
+			}
+		}
+	</script>
+	</head>
+	<body>
+		<button id="btn01">添加超链接</button>
+		<ul id="ul"style="background-color: #bfa;">
+			<li><a href="javascript:;" class="link">超链接一</a></li>
+			<li><a href="javascript:;"class="link">超链接二</a></li>
+			<li><a href="javascript:;"class="link">超链接三</a></li>
+		</ul>
+	</body> -->
+	
+	
+	<script type="text/javascript">
+		window.onload = function(){
+			/* 点击那按钮后弹出内容 */
+			var btn01 = document.getElementById("btn01");
+			
+			/* 使用对象.事件 = 函数的形式绑定响应函数，他只能同时为一个元素绑定一个
+			 响应函数，不能绑定多个，如果绑定了多个，则后边的会覆盖前边的*/
+			/* btn01.onclick = function(){
+				alert(1);
+			}
+			btn01.onclick = function(){
+				alert(2);
+			} */
+			
+			/* addEventListener()通过这个方法也可以为元素绑定响应函数
+			 参数：（IE8及以下不支持）
+					1.事件的字符串，不要on
+					2.回调函数，当事件触发时该函数会被调用
+					3.是否在捕获阶段触发，一般传递false
+				addEventListener()这个方法可以同时为一个元素绑定多个响应函数
+			*/
+			/* btn01.addEventListener("click",function(){
+				alert(1)
+			},false);
+			btn01.addEventListener("click",function(){
+				alert(2)
+			},false); */
+			
+			/* 在IE8中可以使用 attachEvent()来绑定事件
+				参数：
+						1.事件的字符串，要on
+						2.回调函数
+				这个方法也可以同时为一个元素绑定多个事件响应函数，不同的是他是后绑定的先执行*/
+			/* btn01.attachEvent("onclick",function(){
+				alert(1);
+			});
+			btn01.attachEvent("onclick",function(){
+				alert(2);
+			}); */
+			bind(btn01,"click",function(){
+				alert(this);
+			})
+
+			
+			/* 定义一个函数，用来指定元素，绑定响应函数
+			 参数：
+					obj 要绑定的事件的对象
+					eventStr 事件的字符串(不要on)
+					callback 回调函数
+			addEventListener()中的this是绑定时间的对象
+			attachEvent()中的this是window
+			需要统一两个方法的this
+				*/
+			function bind(obj,eventStr,callback){
+				if(obj.addEventListener){
+					obj.addEventListener(eventStr,callback,false);
+				}else{
+					obj.attachEvent("on" + eventStr,callback,function(){
+						//解决this问题，在匿名函数中调用回调函数
+						callback.call(obj);
+					});
+				}
+			}
+		}
+	</script>
+	</head>
+	<body>
+		<button id="btn01">点我一下</button>
+	</body>
+</html>

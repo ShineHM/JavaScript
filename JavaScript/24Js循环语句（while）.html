@@ -1,0 +1,62 @@
+ <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/* var n = 1;
+			while(true){
+				console.log(n++); 
+				break;
+			} */
+/* 			//第一题我的代码
+			var i = 1000;
+			var count = 0;
+			while(i < 5000){ 
+				i *= 1.05;
+				count++;
+			}
+			console.log("需要"+count+"年"); */
+			
+			//第二题我的代码
+			/* do{
+				var score = prompt("请输入成绩：");
+				if(score == 100){
+					console.log("奖励一辆BMW");
+				}else if(score >= 80){
+					console.log("奖励一台iphone15s");
+				}else if(score >= 60){
+					console.log("奖励一本参考书");
+				}else{
+					console.log("没有奖励"); 
+				}
+			}while(score > 100 || score == 0 || isNaN(score)){
+				var score = prompt("请输入正确成绩：");
+			} */ 
+			
+			//第二题代码优化
+			while(true){
+				var score = prompt("请输入成绩：");
+				if(score >= 0 && score <= 100){
+					break;
+				}else{
+					score = prompt("请输入正确成绩：");
+					break;
+				}
+				
+			}
+				if(score == 100){
+					console.log("奖励一辆BMW");
+				}else if(score >= 80){
+					console.log("奖励一台iphone15s");
+				}else if(score >= 60){
+					console.log("奖励一本参考书");
+				}else{
+					console.log("没有奖励"); 
+				}
+			
+		</script> 
+	</head>
+	<body>
+	</body>
+</html>

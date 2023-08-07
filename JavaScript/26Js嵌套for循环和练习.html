@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			/* 通过程序在页面输出如下图形
+		 (1)*
+			**
+			***
+			****
+			***** 
+			和
+		 (2)*****
+			****
+			***
+			**
+			*
+			*/
+		   
+		   //(1)
+			/* for(var i = 0;i < 5;i++){
+				for(var j = 0;j < i+1;j++){
+					document.write("*&nbsp");
+				}
+				document.write("<br />");
+			} */
+			
+			//(2)
+			/* for(i = 0;i < 5;i++){
+				for(j = 0;j < 5-i; j++){
+					document.write("*&nbsp");
+				}
+				document.write("<br/>");
+			} */
+			
+			
+			//打印99乘法表
+			//第三题我的代码
+		//	for(var i = 1;i <= 9;i++){
+		// 		for(j = 1;j <= i;j++){
+		// 			document.write("<span>"+j+"*"+i +"="+i*j+"</span>");
+		// 		}
+		// 		document.write("<br/>");
+		// 	}
+		
+		// <!-- <style type="text/css">
+		// 	span{
+		// 		display: inline-block;
+		// 		width: 60px;
+		// 	}
+		// </style> -->
+			
+			
+			//打印1-100之间所有的质数
+			//第四题我的代码
+			// <!-- for(var j = 1;j < 100;j++){
+			// 	var flag = true;
+			// 	for(var j = 2;j < i;j++){
+			// 		if(i%j == 0){
+			// 			flag = false;
+			// 		}
+			// 	}
+			// 	if(flag){
+			// 		console.log(i);
+			// 	}
+			// } -->
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

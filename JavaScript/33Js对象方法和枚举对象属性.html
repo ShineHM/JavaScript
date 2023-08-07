@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script type="text/javascript">
+/*         var obj = new Object();
+        obj.name = "韩苗";
+        obj.sayname = function(){
+	        console.log(obj.name);
+        }
+        function fun(){
+	        console.log(obj.name);
+        };
+        //调用方法
+        obj.sayname();//韩苗
+        //调用函数
+        fun();//韩苗 */
+
+        var obj = {
+            name:"韩苗",
+            age:18,
+            gender:"女"
+
+        }
+        for (var a in obj){
+            console.log("hell");//三个hello
+            console.log("属性名:"+a);//输出属性名
+            console.log("属性值:"+obj[a]);
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			#areaDiv{
+				width: 300px;
+				height: 100px;
+				border: 1px black solid;
+			}
+			#showMsg{
+				width: 300px;
+				height: 20px;
+				margin-top: 10px;
+				border: 1px black solid;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				/* 当鼠标在areaDiv中移动时，在showMsg中显示鼠标的坐标 */
+				var areaDiv = document.getElementById("areaDiv");
+				var showMsg = document.getElementById("showMsg");
+				//onmousemove此事件会在鼠标在元素中移动时触发
+				areaDiv.onmousemove = function(){
+					/* 在IE8中，响应函数被触发时，浏览器不会传递事件对象
+						在IE8及以下的浏览器中，是将事件对象作为window对象的属性保存的（但火狐中没放在window）*/
+					/* if(!event){
+						event = window.event;
+					} */
+					//解决事件的兼容性问题
+					event = event || window.event;
+					var x = event.clientX;
+					var y = event.clientY;
+					//alert("x="+x+",y="+y);
+					showMsg.innerHTML = "x="+x+",y="+y;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div id="areaDiv"></div>
+		<div id="showMsg"></div>
+	</body>
+</html>

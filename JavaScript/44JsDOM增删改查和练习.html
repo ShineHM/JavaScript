@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<!-- <style type="text/css">
+			body {
+				width: 800px;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			
+			button {
+				width: 300px;
+				margin-bottom: 10px;
+			}
+			
+			#btnList {
+				float:left;
+			}
+			
+			#total{
+				width: 450px;
+				float:left;
+			}
+			
+			ul{
+				list-style-type: none;
+				margin: 0px;
+				padding: 0px;
+			}
+			
+			.inner li{
+				border-style: solid;
+				border-width: 1px;
+				padding: 5px;
+				margin: 5px;
+				background-color: #99ff99;
+				float:left;
+			}
+			
+			.inner{
+				width:400px;
+				border-style: solid;
+				border-width: 1px;
+				margin-bottom: 10px;
+				padding: 10px;
+				float: left;
+			}
+
+		</style>
+		<script type="text/javascript">
+			/* 定义一个函数，专门用来为指定元素绑定单击响应函数
+				参数:
+					idstr 要绑定单击响应函数的对象的id属性
+					fun 事件的回调函数,当单击元素时,该函数触发 */
+			function myClick(idStr,fun){
+				var btn = document.getElementById(idStr);
+				btn.onclick = fun;
+			}
+
+			
+			window.onload = function(){
+							
+			
+				var btno1 = document.getElementById("btn01");
+				btno1.onclick = function(){
+					//查找#bj节点
+					var bj = document.getElementById("bj");
+					alert(bj.innerHTML);
+				};
+				
+				
+				var btn02 = document.getElementById("btn02");
+				btn02.onclick = function(){
+					//查找所有li节点
+					var lis = document.getElementsByTagName("li");
+					//alert(lis);
+					//alert(lis.length);
+					for(var i = 0;i < lis.length;i++){
+						alert(lis[i].innerHTML);
+					}
+				}
+				
+				
+				var btn03 = document.getElementById("btn03");
+				btn03.onclick = function(){
+					//查找name=gender的所有节点
+					var gen = document.getElementsByName("gender");
+					//alert(gen);
+					//alert(gen.length);
+					for(var j = 0;j < gen.length;j++){
+						alert(gen[j].value);
+					}
+				}
+				
+				
+				
+				var btn04 = document.getElementById("btn04");
+				btn04.onclick = function(){
+					//查找#city下所有li节点
+					var city = document.getElementById("city");
+					var lis = city.getElementsByTagName("li");
+					//alert(lis);
+					for(var i = 0;i < lis.length;i++){
+						alert(lis[i].innerHTML);
+					}
+				}
+				
+				
+				
+				var btn05 = document.getElementById("btn05");
+				btn05.onclick = function(){
+					//返回#city下的所有子节点
+					var city = document.getElementById("city");
+					var zi = city.childNodes;
+					//alert(zi.length);
+					var cns = city.children;
+					alert(cns.length);
+				}
+				
+				
+				var btn06 = document.getElementById("btn06");
+				btn06.onclick = function(){
+					//返回#phone的第一个子节点
+					var phone = document.getElementById("phone");
+					//alert(phone.children[0].innerHTML) ;IOS
+					//var first = phone.firstChild;
+					var first = phone.firstElementChild;
+					alert(first.innerHTML);//IOS
+				}
+				
+				
+				myClick("btn07",function(){
+					//返回#bj的父节点
+					var bj = document.getElementById("bj");
+					var pn = bj.parentNode;
+					//alert(pn.innerHTML);
+					alert(pn.innerText);
+				});
+				
+				
+				myClick("btn08",function(){
+					//返回#android的前一个兄弟节点
+					var and = document.getElementById("Android");
+					var ps = and.previousSibling;
+					//var ps = and.previousElementSibling;
+					alert(ps);
+				})
+				
+				
+				myClick("btn09",function(){
+					//读取#username的value属性值
+					var un = document.getElementById("username");
+					//文本框的value属性值就是文本框中填写的内容
+					alert(un.value);
+				})
+				
+				
+				myClick("btn10",function(){
+					//设置#username的value属性值
+					var un = document.getElementById("username");
+					un.value = "hello";
+				})
+				
+				
+				myClick("btn11",function(){
+					//返回#bj的文本值
+					var bj = document.getElementById("bj");
+					//alert(bj.innerHTML);北京
+					//alert(bj.innerText);北京
+					/* 获取北京文本节点
+					var fc = bj.firstChild;
+					alert(fc.nodeValue);//因为文本节点的nodeValue就是文本内容 */
+					alert(bj.firstChild.nodeValue);
+				})
+				
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div id="total">
+			<div class="inner">
+				<p>
+					你喜欢哪个城市？
+				</p>
+				<ul id="city">
+					<li id="bj">北京</li>
+					<li>上海</li>
+					<li>东京</li>
+					<li>首尔</li>
+				</ul>
+				<br>
+				<br>
+				
+				<p>
+					你喜欢哪款单机游戏？
+				</p>
+				<ul id="game">
+					<li id="rl">红警</li>
+					<li>实况</li>
+					<li>极品飞车</li>
+					<li>魔兽</li>
+				</ul>
+				<br />
+				<br />
+				
+				<p>
+					你手机的操作系统是？
+				</p>
+				<ul id="phone">
+					<li>IOS</li>
+					<li id="Android">Android</li>
+					<li>Window Phone</li>
+				</ul>
+			</div>
+			<div class="inner">
+				<br>
+				gender:
+				<input type="radio" name="gender" value="male" />
+				Male
+				<input type="radio" name="gender" value="female" />
+				Female
+				<br>
+				<br>
+				name:
+				<input type="text" name="name" id="username" value="abcde" />
+			</div>
+		</div>
+		<div id="btnList">
+			<div><button id="btn01">查找#bj节点</button></div>
+			<div><button id="btn02">查找所有li节点</button></div>
+			<div><button id="btn03">查找name=gender的所有节点</button></div>
+			<div><button id="btn04">查找#city下所有li节点</button></div>
+			<div><button id="btn05">返回#city下的所有子节点</button></div>
+			<div><button id="btn06">返回#phone的第一个子节点</button></div>
+			<div><button id="btn07">返回#bj的父节点</button></div>
+			<div><button id="btn08">返回#android的前一个兄弟节点</button></div>
+			<div><button id="btn09">读取#username的value属性值</button></div>
+			<div><button id="btn10">设置#username的value属性值</button></div>
+			<div><button id="btn11">返回#bj的文本值</button></div>
+		</div>
+	</body> -->
+	
+	
+	
+	
+	<!-- <script type="text/javascript">
+		window.onload = function(){
+			//var body = document.getElementsByTagName("body")[0];
+		
+			/* var body = document.body;
+			console.log(body); */
+			
+			/* var html = document.documentElement;
+			console.log(html); */
+			
+			//var all = document.all;
+			/* all = document.getElementsByTagName("*");
+			for(var i = 0;i < all.length; i++){
+				console.log(all[i]);
+			} */	
+		}	
+	</script> -->
+
+
+	<style type="text/css">
+		body{
+			width: 600px;
+			margin: 0 auto;
+		}
+		#total{
+			width: 300px;
+			border: black 1px solid;
+			float: left;
+			margin-top: 10px;
+			padding-left: 10px;
+		}
+		ul{
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+		li{
+			float: left;
+			border: black 1px solid;
+			margin: 5px;
+			padding: 5px;
+			background-color: chartreuse;
+		}
+		#btnList{
+			margin-left: 10px;
+			float: left;
+		}
+		button{
+			width: 250px;
+			margin-top: 10px;
+		}
+	</style>
+	<script type="text/javascript">
+		//DOM增删改练习
+		window.onload = function(){
+			function myClick (idStr, fun){
+				var btn = document.getElementById(idStr);
+				btn.onclick = fun;
+			}
+			
+			//建一个“广州”节点，添加到#city下(法1)
+			myClick("btn01",function(){
+				//创建li元素节点
+				var li = document.createElement("li");
+				//创建广州文本节点
+				var gzText = document.createTextNode("广州");
+				li.appendChild(gzText);
+				//获取id为city的节点
+				var city = document.getElementById("city");
+				city.appendChild(li);
+			})
+			
+			
+			//建一个“广州”节点，添加到#city下(法2)
+			myClick("btn07",function(){
+				var city = document.getElementById("city");
+				/* 使用innerHTML也可以实现完成DOM的增删改操作,但他是将所有的li都重新建立,动作太大
+				我们一般两种方式结合使用 */
+				//city.innerHTML = "<li>广州</li>";
+				//结合两种方法(推荐使用)
+				var li = document.createElement("li");
+				li.innerHTML = "广州";
+				city.appendChild(li);
+			})
+			
+			//将“广州”节点插入到#bj前面
+			myClick("btn02",function(){
+				var bj = document.getElementById("bj");
+				var li = document.createElement("li");
+				var gzText = document.createTextNode("广州");
+				li.appendChild(gzText);
+				//获取city
+				var city = document.getElementById("city");
+				city.insertBefore(li,bj);
+			})
+			
+			//使用“广州”节点替换#bj节点
+			myClick("btn03",function(){
+				var bj = document.getElementById("bj");
+				var li = document.createElement("li");
+				var gzText = document.createTextNode("广州");
+				li.appendChild(gzText);
+				var city = document.getElementById("city");
+				city.replaceChild(li,bj);
+			})
+			
+			//删除#bj节点
+			myClick("btn04",function(){
+				var bj = document.getElementById("bj");
+				var city = document.getElementById("city");
+				//city.removeChild(bj);
+				bj.parentNode.removeChild(bj);//常用
+			})
+			
+			//读取#city内的HTML代码
+			myClick("btn05",function(){
+				var city = document.getElementById("city");
+				alert(city.innerHTML);
+			})
+			
+			//设置#bj内的HTML代码
+			
+			myClick("btn06",function(){
+				var bj = document.getElementById("bj");
+				bj.innerHTML = "郑州";
+			})
+			
+			
+		}
+	</script>
+	</head>
+	<body>
+		<div id="total">
+			<div class="inner">
+				<p>
+					你喜欢那个城市？
+				</p>
+				<ul id="city">
+					<li id="bj">北京</li>
+					<li>上海</li>
+					<li>东京</li>
+					<li>首尔</li>
+				</ul>
+			</div>
+		</div>
+		<div id="btnList">
+			<div><button id="btn01">建一个“广州”节点，添加到#city下(法1)</button></div>
+			<div><button id="btn07">建一个“广州”节点，添加到#city下(法2)</button></div>
+			<div><button id="btn02">将“广州”节点插入到#bj前面</button></div>
+			<div><button id="btn03">使用“广州”节点替换#bj节点</button></div>
+			<div><button id="btn04">删除#bj节点</button></div>
+			<div><button id="btn05">读取#city内的HTML代码</button></div>
+			<div><button id="btn06">设置#bj内的HTML代码</button></div>
+		</div>
+	</body>
+</html>

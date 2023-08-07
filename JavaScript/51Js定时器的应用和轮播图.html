@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			
+			#box1{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				position: absolute;
+				left: 0;
+			}
+			
+			#box2{
+				width: 100px;
+				height: 100px;
+				background-color: yellow;
+				position: absolute;
+				left: 0;
+				top: 200px;
+			}
+			
+		</style>
+		<script type="text/javascript" src="js/tools.js"></script>
+		<script type="text/javascript">
+			
+			window.onload = function(){
+				
+				//获取box1
+				var box1 = document.getElementById("box1");
+				//获取btn01
+				var btn01 = document.getElementById("btn01");
+				
+				//获取btn02
+				var btn02 = document.getElementById("btn02");
+				
+				
+				//点击按钮以后，使box1向右移动（left值增大）
+				btn01.onclick = function(){
+					move(box1 ,"left", 800 , 20);
+				};
+				
+				
+				//点击按钮以后，使box1向左移动（left值减小）
+				btn02.onclick = function(){
+					move(box1 ,"left", 0 , 10);
+				};
+				
+				
+				//获取btn03
+				var btn03 = document.getElementById("btn03");
+				btn03.onclick = function(){
+					move(box2 , "left",800 , 10);
+				};
+				
+				//测试按钮
+				var btn04 = document.getElementById("btn04");
+				btn04.onclick = function(){
+					//move(box2 ,"width", 800 , 10);
+					//move(box2 ,"top", 800 , 10);
+					//move(box2 ,"height", 800 , 10);
+					move(box2 , "width" , 800 , 10 , function(){
+						move(box2 , "height" , 400 , 10 , function(){
+							move(box2 , "top" , 0 , 10 , function(){
+								move(box2 , "width" , 100 , 10 , function(){
+							
+								});
+							});
+						});
+					});
+				};
+			};
+				
+				/* 定义一个变量用来保存定时起的标识，但目前我们的定时器标识由全局变量timer保存
+				 所有正在执行的定时器都在这个变量中保存，会导致每个对象关闭的定时器不明确，而导致异常
+				 因此我们不能再次定义，我们应在执行动画的函数中定义obj.timer来使对象操作自己的定时器*/
+				//var timer;
+				
+				/*
+				 * 参数：
+				 * 	obj:要执行动画的对象
+				 * 	attr:要执行动画的样式，比如：left top width height
+				 * 	target:执行动画的目标位置
+				 * 	speed:移动的速度(正数向右移动，负数向左移动)
+				 *  callback:回调函数，这个函数将会在动画执行完毕以后执行
+				 */
+				function move(obj, attr, target, speed, callback) {
+					//关闭上一个定时器
+					clearInterval(obj.timer);
+				
+					//获取元素目前的位置
+					var current = parseInt(getStyle(obj, attr));
+				
+					//判断速度的正负值
+					//如果从0 向 800移动，则speed为正
+					//如果从800向0移动，则speed为负
+					if(current > target) {
+						//此时速度应为负值
+						speed = -speed;
+					}
+				
+					//开启一个定时器，用来执行动画效果
+					//向执行动画的对象中添加一个timer属性，用来保存它自己的定时器的标识
+					obj.timer = setInterval(function() {
+				
+						//获取box1的原来的left值
+						var oldValue = parseInt(getStyle(obj, attr));
+				
+						//在旧值的基础上增加
+						var newValue = oldValue + speed;
+				
+						//判断newValue是否大于800
+						//从800 向 0移动
+						//向左移动时，需要判断newValue是否小于target
+						//向右移动时，需要判断newValue是否大于target
+						if((speed < 0 && newValue < target) || (speed > 0 && newValue > target)) {
+							newValue = target;
+						}
+				
+						//将新值设置给box1
+						obj.style[attr] = newValue + "px";
+				
+						//当元素移动到0px时，使其停止执行动画
+						if(newValue == target) {
+							//达到目标，关闭定时器
+							clearInterval(obj.timer);
+							//动画执行完毕，调用回调函数
+							callback && callback();
+						}
+				
+					}, 30);
+				}
+				
+				/*
+				 * 定义一个函数，用来获取指定元素的当前的样式
+				 * 参数：
+				 * 		obj 要获取样式的元素
+				 * 		name 要获取的样式名
+				 */
+				function getStyle(obj, name) {
+				
+					if(window.getComputedStyle) {
+						//正常浏览器的方式，具有getComputedStyle()方法
+						return getComputedStyle(obj, null)[name];
+					} else {
+						//IE8的方式，没有getComputedStyle()方法
+						return obj.currentStyle[name];
+					}
+				
+				}
+		</script>
+	</head>
+	<body>
+		<br>
+		<button id="btn01">点击按钮后box1向右移动</button>
+		<button id="btn02">点击按钮后box1向左移动</button>
+		<button id="btn03">点击按钮后box2向右移动</button>
+		<button id="btn04">测试按钮</button>
+		<br><br>
+		<div id="box1"></div>
+		<div id="box2"></div>
+		<div style="width: 0;height: 1000px;border: 1px black solid;position: absolute;left: 800px;top: 0;">
+			
+		</div>
+	</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload = function(){
+				//console.log(navigator.userAgent);
+				/* - 谷歌的userAgent：Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) 
+															Chrome/83.0.4103.97 Safari/537.36
+- 					火狐的userAgent：Mozilla/5.0 (Windows NT 6.1; W0W64; rv: 50.0) Gecko/20100101 Firefox/50. O 
+						IE8的userAgent：Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C;
+														.NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; LCTE)
+						IE11的userAgent：Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727;
+														.NET CLR 3.0.30729; .NET CLR 3.5.30729; InfoPath.3; LCTE; rv:11.0) like Gecko
+								在IE11中已经将微软和IE相关的标识去除了，我们基本不能通过userAgent来识别浏览器是不是IE了*/
+				/* var ua = navigator.userAgent;
+				console.log(ua);
+				if(/firefox/i.test(ua)){
+					alert("你是火狐");
+				}else if(/chrome/i.test(ua)){
+					alert("你是谷歌");
+				}else if(/mise/i.test(ua)){
+					alert("你是IE");
+				}else if("ActiveXObject" in window){
+					alert("你是IE11");
+				} */
+				
+				/* 如果通过userAgent不能判断，还可以通过一些浏览器特有的对象来判断浏览器，比如：ActiveXObject */
+				/* if(window.ActiveXObject){//IE11已经发现很多人使用这个属性进行对IE进行判断，它作了修改，修改他的Boolean值，即使有这个属性也返回false
+					alert("你是IE");
+				}else{
+					alert("你不是IE");
+				} */
+				
+				/* if("ActiveXObject" in window){ //in检查师傅哦含有这个属性
+					alert("你是IE");
+					}else{
+						alert("你不是IE");
+					} */
+					
+					
+					var btn01 = document.getElementById("btn01");
+					btn01.onclick = function(){
+						//console.log(location);
+						//location.assign("http://www.baidu.com");
+						location.reload(false);
+					}
+					
+					
+			}
+		</script>
+	</head>
+	<body>
+		<button id="btn01">点我一下</button>
+		<input type="text" />
+	</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload = function(){
+				/* var count = document.getElementById("count");
+				//count.innerHTML = 2;
+				//for(var i = 0;i < 10;i++){
+					//js执行的顺序是非常快的，如果希望程序每段时间执行一次，可以开个定时器 
+					var num = 1;
+					var timer = setInterval(function(){
+						count.innerHTML = num++;
+						if(num == 11){
+							clearInterval(timer);
+						}
+					},1000);
+					//console.log(timer);
+				} */
+				
+				
+				//延时调用
+				var num =1;
+				var timer = setTimeout(function(){
+					console.log(num++);
+				},300);//1，只会执行一次
+				clearTimeout(timer);//关闭延时调用
+			}	
+		</script> 
+	</head>
+	<body>
+	</body>
+</html>
